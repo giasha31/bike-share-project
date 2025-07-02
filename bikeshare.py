@@ -1,4 +1,3 @@
-
 import time
 import pandas as pd
 
@@ -38,7 +37,7 @@ def get_filters():
     return city, month, day
 
 def load_data(city, month, day):
-"""
+    """
     Loads data for the specified city and filters by month and day if applicable.
 
     Args:
@@ -51,8 +50,8 @@ def load_data(city, month, day):
     """
     df = pd.read_csv(CITY_DATA[city])
 
+    # Convert 'Start Time' column to datetime for easy time filtering
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-# Convert 'Start Time' column to datetime for easy time filtering
     df['month'] = df['Start Time'].dt.month_name().str.lower()
     df['day_of_week'] = df['Start Time'].dt.day_name().str.lower()
     df['hour'] = df['Start Time'].dt.hour
@@ -66,16 +65,14 @@ def load_data(city, month, day):
     return df
 
 def time_stats(df):
-"""
-    Loads data for the specified city and filters by month and day if applicable.
+    """
+    Displays statistics on the most frequent times of travel.
 
     Args:
-        city (str): name of the city to analyze
-        month (str): name of the month to filter by, or "all"
-        day (str): name of the day to filter by, or "all"
+        df (DataFrame): The dataframe containing bikeshare data.
 
     Returns:
-        df (DataFrame): Pandas DataFrame containing filtered city data
+        None
     """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -88,16 +85,14 @@ def time_stats(df):
     print('-'*40)
 
 def station_stats(df):
-"""
-    Loads data for the specified city and filters by month and day if applicable.
+    """
+    Displays statistics on the most popular stations and trips.
 
     Args:
-        city (str): name of the city to analyze
-        month (str): name of the month to filter by, or "all"
-        day (str): name of the day to filter by, or "all"
+        df (DataFrame): The dataframe containing bikeshare data.
 
     Returns:
-        df (DataFrame): Pandas DataFrame containing filtered city data
+        None
     """
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -142,13 +137,13 @@ def user_stats(df):
     print('-'*40)
 
 def display_raw_data(df):
-    i = 0
+    row_index = 0
     while True:
         raw = input('\nWould you like to see 5 rows of raw data? Enter yes or no:\n').lower()
         if raw != 'yes':
             break
-        print(df.iloc[i:i+5])
-        i += 5
+        print(df.iloc[row_index:row_index+5])
+        row_index += 5
 
 def main():
     while True:
