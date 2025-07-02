@@ -38,6 +38,17 @@ def get_filters():
     return city, month, day
 
 def load_data(city, month, day):
+"""
+    Loads data for the specified city and filters by month and day if applicable.
+
+    Args:
+        city (str): name of the city to analyze
+        month (str): name of the month to filter by, or "all"
+        day (str): name of the day to filter by, or "all"
+
+    Returns:
+        df (DataFrame): Pandas DataFrame containing filtered city data
+    """
     df = pd.read_csv(CITY_DATA[city])
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -54,6 +65,17 @@ def load_data(city, month, day):
     return df
 
 def time_stats(df):
+"""
+    Loads data for the specified city and filters by month and day if applicable.
+
+    Args:
+        city (str): name of the city to analyze
+        month (str): name of the month to filter by, or "all"
+        day (str): name of the day to filter by, or "all"
+
+    Returns:
+        df (DataFrame): Pandas DataFrame containing filtered city data
+    """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
@@ -65,6 +87,17 @@ def time_stats(df):
     print('-'*40)
 
 def station_stats(df):
+"""
+    Loads data for the specified city and filters by month and day if applicable.
+
+    Args:
+        city (str): name of the city to analyze
+        month (str): name of the month to filter by, or "all"
+        day (str): name of the day to filter by, or "all"
+
+    Returns:
+        df (DataFrame): Pandas DataFrame containing filtered city data
+    """
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
