@@ -15,3 +15,9 @@ This project analyzes bikeshare data for various U.S. cities using Python.
 ## Data
 
 The CSV data files are excluded via `.gitignore`
+## Project Goals
+- Analyze bikeshare data using pandas
+- Filter by city, month, day
+- Calculate stats like most popular times and stations
+
+

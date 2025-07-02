@@ -52,6 +52,7 @@ def load_data(city, month, day):
     df = pd.read_csv(CITY_DATA[city])
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
+# Convert 'Start Time' column to datetime for easy time filtering
     df['month'] = df['Start Time'].dt.month_name().str.lower()
     df['day_of_week'] = df['Start Time'].dt.day_name().str.lower()
     df['hour'] = df['Start Time'].dt.hour
